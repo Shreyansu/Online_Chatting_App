@@ -2,7 +2,7 @@ package com.example.whatsapp;
 
 public class Contact
 {
-    public String name, image, status;
+     public String name, image, status;
 
     public Contact()
     {
