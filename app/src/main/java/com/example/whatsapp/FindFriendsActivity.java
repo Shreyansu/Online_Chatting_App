@@ -29,7 +29,9 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class FindFriendsActivity extends AppCompatActivity {
+public class FindFriendsActivity extends AppCompatActivity
+{
+
     private Toolbar mToolbar;
     private RecyclerView FindFriendRecyclerList;
     private DatabaseReference UserRef;

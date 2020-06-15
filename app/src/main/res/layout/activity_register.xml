@@ -70,7 +70,7 @@
         android:id="@+id/already_Account_btn"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/register_button"
-        android:text="already Have an Account"
+        android:text="Already have an account"
         android:inputType="textEmailAddress"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"

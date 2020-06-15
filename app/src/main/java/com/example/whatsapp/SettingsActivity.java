@@ -42,11 +42,9 @@ public class SettingsActivity extends AppCompatActivity
     private Button Update_acc_setting;
     private EditText user_name,user_status;
     private CircleImageView Profile_image;
-
     private String CurrentUserID;
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
-
     private static final int GalleryPick = 1;
     private StorageReference UserProfileImagesReference;
     private ProgressDialog Loadingbar;
@@ -110,7 +108,7 @@ public class SettingsActivity extends AppCompatActivity
         {
 
             Uri imageUri = data.getData();
-            CropImage.activity()
+            CropImage.activity(imageUri)
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .setAspectRatio(1,1)
                     .start(this);
@@ -144,10 +142,11 @@ public class SettingsActivity extends AppCompatActivity
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if(task.isSuccessful()){
-                                                            Toast.makeText(SettingsActivity.this, "Image saved in database successfuly", Toast.LENGTH_SHORT).show();
+                                                            //Toast.makeText(SettingsActivity.this, "Image saved in database successfuly", Toast.LENGTH_SHORT).show();
                                                             Loadingbar.dismiss();
                                                         }
-                                                        else{
+                                                        else
+                                                            {
                                                             String message = task.getException().toString();
                                                             Toast.makeText(SettingsActivity.this, "Error: " + message,Toast.LENGTH_SHORT).show();
                                                             Loadingbar.dismiss();
@@ -195,7 +194,7 @@ public class SettingsActivity extends AppCompatActivity
                            if(task.isSuccessful())
                            {
                                sendUserToMainActivity();
-                               Toast.makeText(SettingsActivity.this,"Profile updated successfully",Toast.LENGTH_SHORT).show();
+                               //Toast.makeText(SettingsActivity.this,"Profile updated successfully",Toast.LENGTH_SHORT).show();
                            }
                            else
                            {
@@ -228,19 +227,17 @@ public class SettingsActivity extends AppCompatActivity
 
                             }
                             else if((dataSnapshot.exists()) && (dataSnapshot.hasChild("name")))
-                        {
+                            {
                             String retriveUserName = dataSnapshot.child("name").getValue().toString();
                             String retriveUserStatus = dataSnapshot.child("status").getValue().toString();
 
                             user_name.setText(retriveUserName);
                             user_status.setText(retriveUserStatus);
-                        }
-                            else
-                            {
-                                Toast.makeText(SettingsActivity.this,"Please Set Your Profile Details",Toast.LENGTH_SHORT).show();
                             }
-
-
+//                            else
+//                            {
+//                                Toast.makeText(SettingsActivity.this,"Please Set Your Profile Details",Toast.LENGTH_SHORT).show();
+//                            }
                     }
 
                     @Override
